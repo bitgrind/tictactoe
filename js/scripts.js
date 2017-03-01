@@ -37,7 +37,7 @@ Space.prototype.markSpace = function(space, turn) {
     }
     //
   } else {
-
+      space.contents = player2.symbol;
   }
   return
   // determine which player (use turn), determine target space, insert symbol into content
@@ -79,7 +79,10 @@ $(function(){
   });
 
   $('.boardSpace').click(function(){
-    console.log($(this).attr('value'));
+    targetIndex = $(this).attr('value');
+    console.log('click space');
+    space.markSpace(spaceArray[targetIndex],turn);
+    turn++;
   });
 
   $("#setPlayers").submit(function(){
@@ -88,18 +91,6 @@ $(function(){
     player1.symbol = "playerX";
     player2.name = $("#player2").val();
     player2.symbol = "playerO";
-
-    for(t=1;t<20;t++) {
-      var isEven = t%2;
-      if(isEven != 0){
-        //this is an odd
-        space.markSpace(spaceArray[0],turn);
-      }else{
-        //this is an even
-
-      }
-
-    }
 
   });
 });

@@ -66,8 +66,12 @@ $(function(){
 
   $("#setPlayers").submit(function(){
     event.preventDefault();
-    $("#player1").val();
-    Game(newBoard, players, turn);
+    player1.name = $("#player1").val();
+    player1.symbol = "playerX";
+    player2.name = $("#player2").val();
+    player2.symbol = "playerO";
+
+    //game(board, players, turn);
 
   });
 });

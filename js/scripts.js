@@ -1,17 +1,19 @@
 //business logic
-function Game (board,players,turn) {
+function Game(board,players,turn) {
   this.name = "Tic Tack Toe";
   this.board=board;
-  this.players=[];
+  this.players=players;
   this.turn=turn;
 }
+
+
 
 Game.prototype.gameOver = function () {
   return status;
 };
 
 function Board (spaces) {
-  this.spaces=[];
+  this.spaces=spaces;
 }
 
 Board.prototype.threeInRow = function () {
@@ -22,18 +24,18 @@ Board.prototype.find = function () {
   // return space x y
 };
 
-function Space (x,y,contents) {
+function Space(x,y,contents) {
   this.x= x;
   this.y= y;
   this.contents=contents;
 }
 
 Space.prototype.mark = function () {
-  // return lets player mark a space;
+  // determine which player (use turn), determine target space, insert symbol into content
 };
 
-Space.prototype.markedBy = function () {
-  // return which player marked space;
+Space.prototype.checkSpace = function(space) {
+  return space.contents;
 };
 
 function Player(name,symbol) {
@@ -41,24 +43,23 @@ function Player(name,symbol) {
   this.symbol = symbol;
 }
 
-var game = new Game();
 var board = new Board();
 var turn = 1;
 var player1 = new Player();
 var player2 = new Player();
-
-console.log("game: "+game);
-console.log("board: "+board);
-console.log("player1: "+player1);
-console.log("player2: "+player2);
+var players = [player1,player2];
+var spaceArray = [];
 
 for(x=1;x<4;x++){
   for(y=1;y<4;y++){
     var space = new Space(x,y,null);
     console.log("x: "+x+", y: " + y + ", new space: " + space);
+    spaceArray.push(space);
   }
 }
 
+var game = new Game(board, players, turn);
+var board = new Board(spaceArray);
 
 
 //user logic
@@ -71,7 +72,6 @@ $(function(){
     player2.name = $("#player2").val();
     player2.symbol = "playerO";
 
-    //game(board, players, turn);
 
   });
 });

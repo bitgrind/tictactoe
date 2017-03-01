@@ -30,7 +30,16 @@ function Space(x,y,contents) {
   this.contents=contents;
 }
 
-Space.prototype.mark = function () {
+Space.prototype.markSpace = function(space, turn) {
+  if(turn == 1) {
+    if (space.checkSpace(space) == null) {
+      space.contents = player1.symbol;
+    }
+    //
+  } else {
+
+  }
+  return
   // determine which player (use turn), determine target space, insert symbol into content
 };
 
@@ -72,6 +81,15 @@ $(function(){
     player2.name = $("#player2").val();
     player2.symbol = "playerO";
 
+    for(t=1;t<20;t++) {
+
+      if(turn == 1){
+        space.markSpace(spaceArray[0],turn);
+      }else{
+
+      }
+
+    }
 
   });
 });

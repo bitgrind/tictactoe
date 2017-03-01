@@ -59,10 +59,9 @@ var player2 = new Player();
 var players = [player1,player2];
 var spaceArray = [];
 
-for(x=1;x<4;x++){
-  for(y=1;y<4;y++){
+for(y=1;y<4;y++){
+  for(x=1;x<4;x++){
     var space = new Space(x,y,null);
-    console.log("x: "+x+", y: " + y + ", new space: " + space);
     spaceArray.push(space);
   }
 }
@@ -74,6 +73,15 @@ var board = new Board(spaceArray);
 //user logic
 $(function(){
 
+  spaceArray.forEach(function(elem,i){
+    console.log(i);
+    $("#gameBoard").append("<div class='col-md-4 boardSpace' value="+i+">x: "+x+ ", y:"+y+"</div>");
+  });
+
+  $('.boardSpace').click(function(){
+    console.log($(this).attr('value'));
+  });
+
   $("#setPlayers").submit(function(){
     event.preventDefault();
     player1.name = $("#player1").val();
@@ -82,10 +90,12 @@ $(function(){
     player2.symbol = "playerO";
 
     for(t=1;t<20;t++) {
-
-      if(turn == 1){
+      var isEven = t%2;
+      if(isEven != 0){
+        //this is an odd
         space.markSpace(spaceArray[0],turn);
       }else{
+        //this is an even
 
       }
 
